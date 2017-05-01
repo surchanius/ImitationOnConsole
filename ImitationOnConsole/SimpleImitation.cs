@@ -38,20 +38,20 @@ namespace ImitationOnConsole
         public bool HomeostasisSatisfied(double vFollowerStrategy)
         {
             double h = alphaHomeostasisParametr * vFollowerStrategy + bettaHomeostasisParametr;
-            return homeostasisMax<h && h>homeostasisMin;
+            return h<homeostasisMax && h>homeostasisMin;
         }
         public Tuple<double,double> FindStackelbergEquilibrium()//находит равновесие по Штакельбергу 
         {
             double uLeaderEqStrategy=-10000, vFollowerEqStrategy=-10000;
             double fLeaderEqPayoff = -10000;
-            for (int i = 0; i < numberOfParts; i++)//пробегаем 
+            for (int i = 0; i <= numberOfParts; i++)//пробегаем 
             {
-                double uLeaderStrategy = i / numberOfParts;
+                double uLeaderStrategy = (double)i / numberOfParts;
                 double  gFollowerPayoff= -10000;
                 double vBestResponse = -10000;
-                for (int j = 0; j < numberOfParts; j++) //находим лучший ответ 
+                for (int j = 0; j <= numberOfParts; j++) //находим лучший ответ 
                 {
-                    double vFollowerStrategy = j/ numberOfParts;
+                    double vFollowerStrategy = (double)j/ numberOfParts;
                     double newFollowerPayoff = gFollowerPayoffFunction(uLeaderStrategy, vFollowerStrategy);
                     if (gFollowerPayoff < newFollowerPayoff)
                     {
