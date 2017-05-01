@@ -10,6 +10,7 @@ namespace ImitationOnConsole
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
